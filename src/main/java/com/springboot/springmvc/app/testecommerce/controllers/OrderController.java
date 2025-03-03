@@ -29,7 +29,8 @@ public class OrderController {
     public ResponseEntity<?> createOrder(@RequestBody Order order) {
         try {
             Order createdOrder = orderService.createOrder(order);
-            return new ResponseEntity<>(createdOrder, HttpStatus.CREATED);
+            return ResponseEntity.ok(
+                    new SuccessResponse("ORDER_CREATED", "Pedido creado exitosamente"));
         } catch (ClientNotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body(new ErrorResponse("CLIENT_NOT_FOUND", e.getMessage()));
