@@ -50,16 +50,4 @@ public class ProductController {
         productService.deleteById(id);
         return ResponseEntity.ok("Producto eliminado exitosamente");
     }
-
-    @Operation(summary = "Obtener producto por nombre", description = "Obtiene un producto por su nombre")
-    @GetMapping("/findByName")
-    public ResponseEntity<Product> getProductByName(@RequestBody String name){
-        try{
-            return ResponseEntity.ok(productService.findByName(name));
-        }
-        catch (Exception e){
-            return ResponseEntity.badRequest().body(null);
-        }
-    }
-
 }
